@@ -46,6 +46,15 @@ def on_load(server: PluginServerInterface, prev_module):
             Literal('stop').
                 requires(lambda src: src.has_permission(permissions['stop'])).
                 runs(lambda src: server.stop())
+                acq = restart_lock.acquire(blocking=False)
+	            if not acq:
+		            source.reply(tr('restart.spam'))
+		            return
+	            try:
+		            for i in range(config.restart_delay):
+			            source.get_server().broadcast(RText(tr('restart.countdown', config.restart_delay - i), color=RColor.red))
+			            time.sleep(1)
+		                runs(lambda src: server.stop())
         ).
             then(
             Literal('stop_exit').
