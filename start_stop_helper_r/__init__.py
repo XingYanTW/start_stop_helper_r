@@ -15,6 +15,7 @@ class Config(Serializable):
         'restart': 3,
         'exit': 4,
     }
+    restart_delay: int = 5
 
 
 config: Config
