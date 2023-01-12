@@ -1,6 +1,10 @@
 # StartStopHelperR
 
+[原repository](https://github.com/AnzhiZhang/MCDReforgedPlugins)
+[原作者](https://github.com/AnzhiZhang)
+
 > 开关服助手
+**新增了到計時**
 
 ## 使用
 
